@@ -1,0 +1,64 @@
+{% load static %}
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    {% load static %}
+    <title>TRIP PLANNER</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="{% static 'css/bootstrap.css' %}" rel='stylesheet' type='text/css'/>
+    <link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css'/>
+    <link href="{% static 'css/style1.css' %}" rel='stylesheet' type='text/css'/>
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" rel="stylesheet">
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <!--<script src="js/jquery.easydropdown.js"></script>-->
+    <!--start slider -->
+    <link href="{% static 'css/fwslider.css' %}" media="all" rel="stylesheet">
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/fwslider.js' %}"></script>
+    <!--end slider -->
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+{% include '!navbar.html' %}
+
+
+<div class="container" style="padding:40px;"></div>
+<form action="" method="POST"> {% csrf_token %}
+
+    <div class="container  " style="width:50%; margin-bottom:20px;">
+        <h2>Login Form</h2>
+        <hr>
+        <label for="username">Username</label>
+        <input placeholder="username" class="form-control"  id="username" name="username" type="text"><br>
+        <label for="password">Password</label>
+        <input placeholder="password"  class="form-control" id="password" name="password" type="password"><br>
+        <input type="submit" value="Login">
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+
+        <p>Are you new? <a href="{% url 'register' %}" >
+            {% csrf_token %}Sign Up here....</a>.</p>
+
+    </div>
+
+</form>
+
+
+{% include '!footer.html' %}
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	{% load static %}
+<title>TRIP PLANNER</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<link href="{% static 'css/bootstrap.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static 'css/style1.css' %}" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<!--<script src="js/jquery.easydropdown.js"></script>-->
+<!--start slider -->
+<link rel="stylesheet" href="{% static 'css/fwslider.css' %}" media="all">
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/fwslider.js' %}"></script>
+<!--end slider -->
+<script type="text/javascript">
+        $(document).ready(function() {
+            $(".dropdown img.flag").addClass("flagvisibility");
+
+            $(".dropdown dt a").click(function() {
+                $(".dropdown dd ul").toggle();
+            });
+
+            $(".dropdown dd ul li a").click(function() {
+                var text = $(this).html();
+                $(".dropdown dt a span").html(text);
+                $(".dropdown dd ul").hide();
+                $("#result").html("Selected value is: " + getSelectedValue("sample"));
+            });
+
+            function getSelectedValue(id) {
+                return $("#" + id).find("dt a span.value").html();
+            }
+
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdown"))
+                    $(".dropdown dd ul").hide();
+            });
+
+
+            $("#flagSwitcher").click(function() {
+                $(".dropdown img.flag").toggleClass("flagvisibility");
+            });
+        });
+     </script>
+</head>
+<body>
+	{% include '!navbar.html'  %}
+
+
+
+
+
+     <div class="main">
+      <div class="shop_top">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-7">
+					<p class="m_8">Plan your trip with Travel India.Enjoy the trip at discounted rate.for any queries related to trip packages
+					feel free to contact us.</p>
+					<div class="address">
+				                <p>Travel India</p>
+						   		<p>23,HAL Calicut,Kerala</p>
+						   		<p>Kerala</p>
+				   		<p>Phone:91 98765432</p>
+				 	 	<p>Email: <span>support@travelIndia.com</span></p>
+				   		<p>Follow on: <span>Facebook</span>, <span>Twitter</span></p>
+				   </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 contact">
+
+					<form name="sentMessage" id="contactForm"  action="contact1" novalidate>{% csrf_token %}
+	       <h3>Let us know</h3>
+		 <div class="control-group">
+                    <div class="controls">
+			<input type="text" class="form-control"
+			   	   placeholder="Full Name" id="name" name="fullname" required
+			           data-validation-required-message="Please enter your name" />
+			  <p class="help-block"></p>
+		   </div>
+	         </div>
+                <div class="control-group">
+                  <div class="controls">
+			<input type="email" class="form-control" placeholder="Email"
+			   	            id="email" name="Email" required
+			   		   data-validation-required-message="Please enter your email" />
+		</div>
+	    </div>
+
+               <div class="control-group">
+                 <div class="controls">
+				 <textarea rows="10" cols="100" class="form-control"
+                       placeholder="Message" id="message" name="msg" required
+		       data-validation-required-message="Please enter your message" minlength="5"
+                       data-validation-minlength-message="Min 5 characters"
+                        maxlength="999" style="resize:none"></textarea>
+		</div>
+               </div>
+	     <div id="success"> </div> <!-- For success/fail messages -->
+	    <button type="submit" class="btn btn-primary pull-right">Send</button><br />
+          </form>
+
+
+					<!---->
+					<!--<form action  = "contact"  method="post">-->
+						<!--{% csrf_token %}-->
+						<!--<div class="form-group">-->
+							<!--<label>Name</label>-->
+							<!--<input type="text" name="Name" class="form-control" style="width:30%;" required="required">-->
+
+
+							<!--<label>Email</label>-->
+							<!--<input type="email" name="Email" class="form-control" style="width:30%;" required="required">-->
+
+							<!--<label>Message</label>-->
+							<!--<input type="text" name="Message" class="form-control" style="width:30%;" required="required">-->
+
+							<!--<button type="submit" class="btn btn-sm btn-primary">Create</button>-->
+						<!--</div>-->
+					<!--</form>-->
+
+					<!--<form method="post" class="post-form">-->
+						<!--{% csrf_token %}-->
+						<!--<button type="submit" class="save btn btn-default">Save</button>-->
+					<!--</form>-->
+
+
+
+
+
+						<!--<form action="contact" method="post">-->
+							<!--{% csrf_token %}-->
+							<!--<div class="form-group">-->
+								<!--<input type="text" name="Name" class="form-control" placeholder="Name" required="required">-->
+							<!--</div>-->
+							<!--<div class="form-group">-->
+								<!--<input type="email" name="Email" class="form-control" placeholder="Email" required="required">-->
+							<!--</div>-->
+							<!--<div class="form-group">-->
+								<!--<input type="text" name="Subject" class="form-control" placeholder="Subject" required="required">-->
+							<!--</div>-->
+							<!--<div class="form-group">-->
+								<!--<textarea name="Message" class="form-control" placeholder="Message" required="required"></textarea>-->
+							<!--</div>-->
+							<!--<button type="submit" class="btn button-w3layouts">Submit</button>-->
+						<!--</form>-->
+
+
+
+
+			     </div>
+		    </div>
+	     </div>
+	   </div>
+	  </div>
+	 {% include '!footer.html'  %}
+</body>	
+</html>

@@ -1,0 +1,49 @@
+{% load static %}
+<div class="header">
+		<div class="container">
+			<div class="row">
+			  <div class="col-md-12">
+				 <div class="header-left">
+					 <div class="logo">
+						<a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt=""/></a>
+					 </div>
+					 <div class="menu">
+						    <ul class="nav" id="nav">
+
+								<li class="current"><a href="{% url 'index' %}">Home</a></li>
+						    	<li><a href="{% url 'packages' %}">Packages</a></li>
+								<li><a href="{% url 'contact' %}">Contact Us</a></li>
+								{% if request.user.is_authenticated %}
+								<li><a href="{% url 'logout' %}">logout</a></li>
+
+								{% else %}
+								<li><a href="{% url 'register' %}">Register</a></li>
+								<li><a href="{% url 'login' %}">Sign In</a></li>
+								{% endif %}
+
+								<div class="clear"></div>
+							</ul>
+
+							<script type="text/javascript" src="{% static 'js/responsive-nav.js' %}"></script>
+					 </div>
+	    		    <div class="clear"></div>
+	    	    </div>
+	            <div class="header_right">
+	    		  <!-- start search-->
+
+						<!----search-scripts---->
+						<script src="{% static 'js/classie.js' %}"></script>
+						<script src="{% static 'js/uisearch.js' %}"></script>
+						<script>
+							new UISearch( document.getElementById( 'sb-search' ) );
+						</script>
+						<!----//search-scripts---->
+
+						  <div class="clear"></div>
+
+		           <div class="clear"></div>
+	       </div>
+	      </div>
+		 </div>
+	    </div>
+	  </div>
